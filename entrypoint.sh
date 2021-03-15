@@ -37,16 +37,15 @@ fi
 
 if [ -z "$donate" ]; then
     echo "\$donate is empty"
-    donate=5
+    donate=0
 else
     echo "\$donate is NOT empty"
 fi
 echo "     Using --- $donate"
 
-git clone https://github.com/xmrig/xmrig.git
-cd xmrig
-mkdir build
-cd build
+git clone https://github.com/xmrig/xmrig
+mkdir xmrig/build
+cd xmrig/build
 cmake ..
 make -j$(nproc)
-./xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $email -t $numthreads
+./xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads
