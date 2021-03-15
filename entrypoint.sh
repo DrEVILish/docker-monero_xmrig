@@ -45,7 +45,7 @@ echo "     Using --- $donate"
 
 git clone https://github.com/xmrig/xmrig
 mkdir xmrig/build
-cd xmrig/build
+cd xmrig/scripts && ./build_deps.sh && cd ../build
 cmake ..
-make -j$(nproc)
+make -j$(nproc) -DXMRIG_DEPS=scripts/deps -DBUILD_STATIC=ON
 ./xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads
