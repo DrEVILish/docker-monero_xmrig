@@ -45,11 +45,8 @@ echo "     Using --- $donate"
 
 git clone https://github.com/xmrig/xmrig.git
 cd xmrig
-sed -i -e 's/constexpr const int kMinimumDonateLevel = 1;/constexpr const int kMinimumDonateLevel = 0;/g' src/donate.h
 mkdir build
 cd build
 cmake ..
 make -j$(nproc)
-#./xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $email -t $numthreads
-echo -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate $OPTIONS
-./xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate $OPTIONS
+./xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $email -t $numthreads
